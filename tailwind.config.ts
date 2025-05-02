@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,23 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Bay Area Trail Guide colors
+				baytrail: {
+					background: '#EAF4F4',
+					card: '#FFFFFF',
+					primary: '#0077B6',
+					secondary: '#90E0EF',
+					warning: '#F94144',
+					success: '#06D6A0',
+					text: '#333333',
+					border: '#D9D9D9',
+					reservation: '#007F5F',
 				}
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				heading: ['Poppins', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +101,23 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'scale-up': {
+					from: {
+						transform: 'scale(1)'
+					},
+					to: {
+						transform: 'scale(1.03)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'scale-up': 'scale-up 0.2s ease-out'
+			},
+			boxShadow: {
+				'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
 			}
 		}
 	},
