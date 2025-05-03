@@ -1,15 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Clock, Map, ArrowUp } from 'lucide-react';
 import { Trail } from '@/data/trails';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import TrailDetailModal from './TrailDetailModal';
 
 type TrailCardProps = {
   trail: Trail;
 };
 
 const TrailCard = ({ trail }: TrailCardProps) => {
+  const [detailModalOpen, setDetailModalOpen] = useState(false);
+
   const formatTime = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const remainingMinutes = minutes % 60;
@@ -111,7 +114,10 @@ const TrailCard = ({ trail }: TrailCardProps) => {
         </div>
         
         <div className="flex flex-col sm:flex-row gap-3">
-          <Button className="bg-baytrail-primary hover:bg-baytrail-primary/90 flex-1">
+          <Button 
+            className="bg-baytrail-primary hover:bg-baytrail-primary/90 flex-1"
+            onClick={() => setDetailModalOpen(true)}
+          >
             Trail Info
           </Button>
           {trail.reservationRequired && trail.reservationUrl && (
@@ -126,6 +132,12 @@ const TrailCard = ({ trail }: TrailCardProps) => {
           )}
         </div>
       </div>
+
+      <TrailDetailModal 
+        trail={trail} 
+        open={detailModalOpen} 
+        onOpenChange={setDetailModalOpen} 
+      />
     </div>
   );
 };

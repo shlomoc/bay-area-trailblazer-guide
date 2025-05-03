@@ -1,8 +1,9 @@
-
 export type TrailType = 'mountain' | 'coast' | 'urban' | 'park';
 export type Difficulty = 'easy' | 'moderate' | 'hard';
 export type AccessibilityFeature = 'pet-friendly' | 'kid-friendly' | 'wheelchair-accessible';
 export type Transportation = 'walking' | 'driving' | 'shuttle';
+export type ParkingAvailability = 'ample' | 'limited' | 'difficult' | 'reservation-required';
+export type TrailCondition = 'excellent' | 'good' | 'fair' | 'poor' | 'closed';
 
 export interface Trail {
   id: string;
@@ -20,6 +21,14 @@ export interface Trail {
   accessibility: AccessibilityFeature[];
   imageUrl: string;
   reservationUrl?: string;
+  // New fields for enhanced trail details
+  fullDescription?: string;
+  parking: ParkingAvailability;
+  trailCondition: TrailCondition;
+  seasonalConsiderations?: string;
+  trailheadLat?: number; // Latitude for Google Maps
+  trailheadLng?: number; // Longitude for Google Maps
+  trailheadAddress?: string; // Address for Google Maps
 }
 
 export const trails: Trail[] = [
@@ -39,6 +48,13 @@ export const trails: Trail[] = [
     accessibility: ["kid-friendly"],
     imageUrl: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843",
     reservationUrl: "https://gomuirwoods.com/",
+    fullDescription: "Muir Woods National Monument is home to a pristine forest of old-growth coast redwoods, some of the tallest trees on Earth. The Muir Woods Loop takes you through the heart of this majestic forest, alongside a gentle creek, and offers multiple bridge crossings to create shorter or longer loops. This trail has a boardwalk and paved sections making parts of it accessible to wheelchairs and strollers.",
+    parking: "reservation-required",
+    trailCondition: "excellent",
+    seasonalConsiderations: "Busiest during summer weekends and holidays. Winter can bring muddy conditions after rain, but the redwood canopy offers good protection from light rain. Fall offers the most peaceful experience with fewer crowds.",
+    trailheadLat: 37.8912,
+    trailheadLng: -122.5713,
+    trailheadAddress: "1 Muir Woods Rd, Mill Valley, CA 94941"
   },
   {
     id: "half-moon-bay",
