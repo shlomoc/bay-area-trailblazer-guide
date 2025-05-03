@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Clock, Map, ArrowUp } from 'lucide-react';
+import { Clock, Map, ArrowUp, Leaf } from 'lucide-react';
 import { Trail } from '@/data/trails';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -47,8 +47,25 @@ const TrailCard = ({ trail }: TrailCardProps) => {
         return '🚗';
       case 'shuttle':
         return '🚌';
+      case 'public-transport':
+        return '🚆';
       default:
         return '🚶';
+    }
+  };
+
+  const isEcoFriendly = trail.transportation.includes('public-transport');
+
+  const getStatusBadge = (status: Trail['status']) => {
+    switch (status) {
+      case 'open':
+        return <Badge className="bg-baytrail-success text-white border-none">Open</Badge>;
+      case 'closed':
+        return <Badge className="bg-red-500 text-white border-none">Closed</Badge>;
+      case 'partially-closed':
+        return <Badge className="bg-amber-500 text-white border-none">Partially Closed</Badge>;
+      default:
+        return null;
     }
   };
 
@@ -73,6 +90,12 @@ const TrailCard = ({ trail }: TrailCardProps) => {
           <Badge className={`${getDifficultyColor(trail.difficulty)} border-none`}>
             {trail.difficulty.charAt(0).toUpperCase() + trail.difficulty.slice(1)}
           </Badge>
+          {getStatusBadge(trail.status)}
+          {isEcoFriendly && (
+            <Badge className="bg-green-600 text-white border-none flex items-center gap-1">
+              <Leaf size={14} /> Eco-Friendly
+            </Badge>
+          )}
         </div>
       </div>
       
@@ -107,7 +130,7 @@ const TrailCard = ({ trail }: TrailCardProps) => {
             {trail.transportation.map((transport) => (
               <div key={transport} className="flex items-center gap-1 text-sm">
                 <span>{getTransportationIcon(transport)}</span>
-                <span className="capitalize">{transport} Distance</span>
+                <span className="capitalize">{transport === 'public-transport' ? 'Public Transit' : transport} Distance</span>
               </div>
             ))}
           </div>

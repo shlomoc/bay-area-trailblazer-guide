@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Clock, Map, ArrowUp, ExternalLink } from 'lucide-react';
+import { Clock, Map, ArrowUp, ExternalLink, Leaf, Timer } from 'lucide-react';
 import { Trail } from '@/data/trails';
 
 interface TrailDetailModalProps {
@@ -57,6 +57,8 @@ const TrailDetailModal = ({ trail, open, onOpenChange }: TrailDetailModalProps) 
         return '🚗';
       case 'shuttle':
         return '🚌';
+      case 'public-transport':
+        return '🚆';
       default:
         return '🚶';
     }
@@ -94,15 +96,38 @@ const TrailDetailModal = ({ trail, open, onOpenChange }: TrailDetailModalProps) 
     }
   };
 
+  const getStatusBadge = (status: Trail['status']) => {
+    switch (status) {
+      case 'open':
+        return <Badge className="bg-baytrail-success text-white border-none">Open</Badge>;
+      case 'closed':
+        return <Badge className="bg-red-500 text-white border-none">Closed</Badge>;
+      case 'partially-closed':
+        return <Badge className="bg-amber-500 text-white border-none">Partially Closed</Badge>;
+      default:
+        return null;
+    }
+  };
+
+  const isEcoFriendly = trail.transportation.includes('public-transport');
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <div className="flex justify-between items-center">
             <DialogTitle className="text-2xl font-bold">{trail.name}</DialogTitle>
-            <Badge className={`${getDifficultyColor(trail.difficulty)}`}>
-              {trail.difficulty.charAt(0).toUpperCase() + trail.difficulty.slice(1)}
-            </Badge>
+            <div className="flex gap-2">
+              {getStatusBadge(trail.status)}
+              <Badge className={`${getDifficultyColor(trail.difficulty)}`}>
+                {trail.difficulty.charAt(0).toUpperCase() + trail.difficulty.slice(1)}
+              </Badge>
+              {isEcoFriendly && (
+                <Badge className="bg-green-600 text-white border-none flex items-center gap-1">
+                  <Leaf size={14} /> Eco-Friendly
+                </Badge>
+              )}
+            </div>
           </div>
           <DialogDescription className="text-base">{trail.subtitle}</DialogDescription>
         </DialogHeader>
@@ -148,6 +173,20 @@ const TrailDetailModal = ({ trail, open, onOpenChange }: TrailDetailModalProps) 
             </CardContent>
           </Card>
 
+          {trail.bestVisitingTime && (
+            <Card>
+              <CardContent className="p-4">
+                <h3 className="text-lg font-bold mb-2 flex items-center gap-2">
+                  <Timer className="text-baytrail-primary" size={20} />
+                  Best Time to Visit
+                </h3>
+                <p className="text-gray-700">
+                  {trail.bestVisitingTime}
+                </p>
+              </CardContent>
+            </Card>
+          )}
+
           <Card>
             <CardContent className="p-4">
               <h3 className="text-lg font-bold mb-2">Getting There</h3>
@@ -155,11 +194,21 @@ const TrailDetailModal = ({ trail, open, onOpenChange }: TrailDetailModalProps) 
                 {trail.transportation.map((transport) => (
                   <div key={transport} className="flex items-center gap-1">
                     <span>{getTransportationIcon(transport)}</span>
-                    <span className="capitalize">{transport} Distance</span>
+                    <span className="capitalize">{transport === 'public-transport' ? 'Public Transit' : transport} Distance</span>
                   </div>
                 ))}
               </div>
               
+              {isEcoFriendly && trail.publicTransportInfo && (
+                <div className="mb-4 p-3 bg-green-50 rounded-md border border-green-200">
+                  <div className="flex items-center gap-2 font-semibold text-green-700 mb-1">
+                    <Leaf size={16} />
+                    <span>Public Transportation</span>
+                  </div>
+                  <p className="text-sm text-gray-700">{trail.publicTransportInfo}</p>
+                </div>
+              )}
+
               <Button 
                 className="w-full bg-baytrail-primary hover:bg-baytrail-primary/90 mb-4"
                 asChild
@@ -200,6 +249,24 @@ const TrailDetailModal = ({ trail, open, onOpenChange }: TrailDetailModalProps) 
               )}
             </CardContent>
           </Card>
+
+          {trail.localTips && trail.localTips.length > 0 && (
+            <Card>
+              <CardContent className="p-4">
+                <h3 className="text-lg font-bold mb-3">Local Tips</h3>
+                <ul className="space-y-3">
+                  {trail.localTips.map((tip, index) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="bg-baytrail-secondary text-baytrail-primary font-bold rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0">
+                        {index + 1}
+                      </span>
+                      <p className="text-gray-700">{tip}</p>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          )}
 
           <div className="flex gap-4">
             {trail.reservationRequired && trail.reservationUrl && (

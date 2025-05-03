@@ -1,9 +1,11 @@
+
 export type TrailType = 'mountain' | 'coast' | 'urban' | 'park';
 export type Difficulty = 'easy' | 'moderate' | 'hard';
 export type AccessibilityFeature = 'pet-friendly' | 'kid-friendly' | 'wheelchair-accessible';
-export type Transportation = 'walking' | 'driving' | 'shuttle';
+export type Transportation = 'walking' | 'driving' | 'shuttle' | 'public-transport';
 export type ParkingAvailability = 'ample' | 'limited' | 'difficult' | 'reservation-required';
 export type TrailCondition = 'excellent' | 'good' | 'fair' | 'poor' | 'closed';
+export type TrailStatus = 'open' | 'closed' | 'partially-closed';
 
 export interface Trail {
   id: string;
@@ -21,7 +23,7 @@ export interface Trail {
   accessibility: AccessibilityFeature[];
   imageUrl: string;
   reservationUrl?: string;
-  // New fields for enhanced trail details
+  // Enhanced trail details
   fullDescription?: string;
   parking: ParkingAvailability;
   trailCondition: TrailCondition;
@@ -29,6 +31,11 @@ export interface Trail {
   trailheadLat?: number; // Latitude for Google Maps
   trailheadLng?: number; // Longitude for Google Maps
   trailheadAddress?: string; // Address for Google Maps
+  // New fields
+  status: TrailStatus;
+  bestVisitingTime?: string;
+  publicTransportInfo?: string;
+  localTips?: string[];
 }
 
 export const trails: Trail[] = [
@@ -44,7 +51,7 @@ export const trails: Trail[] = [
     elevationGain: 400,
     maxElevation: 1500,
     description: "An easy scenic walk through the giant redwoods of Muir Woods. Perfect for families and first-time visitors. The main trail is paved and wheelchair accessible.",
-    transportation: ["driving", "shuttle"],
+    transportation: ["driving", "shuttle", "public-transport"],
     accessibility: ["kid-friendly"],
     imageUrl: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843",
     reservationUrl: "https://gomuirwoods.com/",
@@ -54,7 +61,15 @@ export const trails: Trail[] = [
     seasonalConsiderations: "Busiest during summer weekends and holidays. Winter can bring muddy conditions after rain, but the redwood canopy offers good protection from light rain. Fall offers the most peaceful experience with fewer crowds.",
     trailheadLat: 37.8912,
     trailheadLng: -122.5713,
-    trailheadAddress: "1 Muir Woods Rd, Mill Valley, CA 94941"
+    trailheadAddress: "1 Muir Woods Rd, Mill Valley, CA 94941",
+    status: "open",
+    bestVisitingTime: "Fall (September-November) for fewer crowds and mild weather; early morning (before 9am) on weekdays to avoid tour buses.",
+    publicTransportInfo: "Muir Woods Shuttle (Route 66) runs from Sausalito Ferry Terminal on weekends and holidays. $3 per person (cash only).",
+    localTips: [
+      "The back trails beyond the main boardwalk are less crowded and equally beautiful.",
+      "Pack layers, as the temperature under the redwood canopy can be 10-15°F cooler than surrounding areas.",
+      "Visit the gift shop for the special Muir Woods cancellation stamp for National Park enthusiasts."
+    ]
   },
   {
     id: "half-moon-bay",
@@ -68,9 +83,19 @@ export const trails: Trail[] = [
     elevationGain: 50,
     maxElevation: 100,
     description: "A flat, easy coastal walk with stunning Pacific Ocean views. Great for spotting marine wildlife and catching the sunset.",
-    transportation: ["driving"],
+    transportation: ["driving", "public-transport"],
     accessibility: ["pet-friendly", "kid-friendly", "wheelchair-accessible"],
     imageUrl: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
+    parking: "ample",
+    trailCondition: "good",
+    status: "open",
+    bestVisitingTime: "Spring (April-May) for wildflowers or Fall (September-October) for warm, fog-free days. Sunset is spectacular year-round.",
+    publicTransportInfo: "SamTrans Route 17 runs along Highway 1 with stops near trail access points. Weekend service is limited.",
+    localTips: [
+      "The Ritz Carlton section has free public access to bathrooms and water fountains.",
+      "Pillar Point Harbor (north end) has the best tidepools at low tide.",
+      "Best whale watching is January-March; bring binoculars!"
+    ]
   },
   {
     id: "lands-end",
@@ -84,9 +109,19 @@ export const trails: Trail[] = [
     elevationGain: 350,
     maxElevation: 400,
     description: "Historic ruins, wildflower-covered hills, and stunning views of the Golden Gate Bridge. One of San Francisco's most scenic urban hikes.",
-    transportation: ["driving", "walking"],
+    transportation: ["driving", "walking", "public-transport"],
     accessibility: ["pet-friendly"],
     imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+    parking: "limited",
+    trailCondition: "good",
+    status: "open",
+    bestVisitingTime: "Clear days after winter rainstorms for best bridge views; summer mornings before fog rolls in (before 11am).",
+    publicTransportInfo: "MUNI 38 Geary bus to Point Lobos Ave/48th Ave. Also accessible via the 5, 5R, and 31 lines.",
+    localTips: [
+      "The hidden Sutro Baths labyrinth is just north of the main parking lot.",
+      "Mile Rock Beach has the best secluded views and is often overlooked by tourists.",
+      "Go during King Tides in winter to see spectacular wave action along the cliffs."
+    ]
   },
   {
     id: "mission-peak",
@@ -100,9 +135,19 @@ export const trails: Trail[] = [
     elevationGain: 2100,
     maxElevation: 2500,
     description: "A challenging hike to the iconic peak with panoramic views of the entire Bay Area. Popular for sunrise and sunset hikes.",
-    transportation: ["driving"],
+    transportation: ["driving", "public-transport"],
     accessibility: [],
     imageUrl: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3",
+    parking: "difficult",
+    trailCondition: "good",
+    status: "open",
+    bestVisitingTime: "Spring (March-May) for green hillsides and wildflowers; sunrise hikes for cooler temperatures and best photography.",
+    publicTransportInfo: "AC Transit Route 251 stops at Ohlone College, where an alternative (and less crowded) trailhead is located.",
+    localTips: [
+      "The Hidden Valley Trail from Ohlone College is longer but far less crowded than the Stanford Avenue route.",
+      "Bring trekking poles for the steep descent which can be hard on knees.",
+      "Start no later than 3 hours before sunset to avoid hiking down in the dark."
+    ]
   },
   {
     id: "golden-gate-park",
@@ -116,9 +161,19 @@ export const trails: Trail[] = [
     elevationGain: 50,
     maxElevation: 100,
     description: "A peaceful stroll through San Francisco's beautiful botanical gardens, including the historic Japanese Tea Garden and Conservatory of Flowers.",
-    transportation: ["driving", "walking"],
+    transportation: ["driving", "walking", "public-transport"],
     accessibility: ["kid-friendly", "wheelchair-accessible"],
     imageUrl: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9",
+    parking: "limited",
+    trailCondition: "excellent",
+    status: "open",
+    bestVisitingTime: "Spring (April-May) for cherry blossoms and tulips; weekday mornings to avoid crowds.",
+    publicTransportInfo: "MUNI N-Judah line stops at 9th & Irving, close to several park entrances. Multiple bus lines (5, 7, 29, 44) serve the park perimeter.",
+    localTips: [
+      "SF residents get free admission to the Botanical Garden (bring ID).",
+      "The Shakespeare Garden is a hidden gem for quiet reflection.",
+      "Free park shuttle runs on weekends, connecting major attractions within the park."
+    ]
   },
   {
     id: "angel-island",
@@ -132,9 +187,19 @@ export const trails: Trail[] = [
     elevationGain: 400,
     maxElevation: 780,
     description: "A scenic loop around Angel Island with incredible 360-degree views of San Francisco, Marin County, Oakland, and beyond. Accessible only by ferry.",
-    transportation: ["shuttle"],
+    transportation: ["shuttle", "public-transport"],
     accessibility: ["pet-friendly"],
     imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    parking: "limited",
+    trailCondition: "good",
+    status: "open",
+    bestVisitingTime: "Fall (September-October) for clear skies and best visibility of surrounding Bay Area; weekdays to avoid crowds.",
+    publicTransportInfo: "Take the Blue & Gold Fleet ferry from San Francisco or the Angel Island Tiburon Ferry. Public transportation to both ferry terminals available.",
+    localTips: [
+      "Rent bikes at the island dock to cover more ground (call ahead for reservations).",
+      "The Sunset Trail has better views but more climbing than the Perimeter Trail.",
+      "Pack a picnic to enjoy at East Garrison, where tables have the best views."
+    ]
   },
   {
     id: "mt-tamalpais",
@@ -151,6 +216,16 @@ export const trails: Trail[] = [
     transportation: ["driving"],
     accessibility: [],
     imageUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+    parking: "limited",
+    trailCondition: "good",
+    status: "partially-closed",
+    bestVisitingTime: "Winter (Dec-Feb) after rain clears the air for best long-distance views; spring (April-May) for wildflowers.",
+    publicTransportInfo: "",
+    localTips: [
+      "The fire lookout tower at the summit is staffed by volunteers who offer fascinating information about the mountain's history.",
+      "West Point Inn (accessible only by foot) offers pancake breakfasts one Sunday per month.",
+      "Fog often covers the mountain in summer; check webcams before going."
+    ]
   },
   {
     id: "sutro-baths",
@@ -164,9 +239,19 @@ export const trails: Trail[] = [
     elevationGain: 100,
     maxElevation: 200,
     description: "Explore the ruins of the historic Sutro Baths, once the world's largest indoor swimming pool complex. Now a fascinating seaside archaeological site.",
-    transportation: ["driving", "walking"],
+    transportation: ["driving", "walking", "public-transport"],
     accessibility: ["kid-friendly"],
     imageUrl: "https://images.unsplash.com/photo-1433086966358-54859d0ed716",
+    parking: "limited",
+    trailCondition: "good",
+    status: "open",
+    bestVisitingTime: "Winter for dramatic storm waves; sunset for incredible photography opportunities.",
+    publicTransportInfo: "MUNI 38 Geary bus to the end of the line (Ocean Beach). Also accessible via the 5 and 31 lines.",
+    localTips: [
+      "Look for the hidden tunnel on the south end of the ruins that leads to a secret beach.",
+      "The nearby Cliff House restaurant has been replaced with a lookout area offering excellent views.",
+      "At low tide, you can see remnants of ships that wrecked along this stretch of coast."
+    ]
   },
   {
     id: "tilden-park",
@@ -180,8 +265,19 @@ export const trails: Trail[] = [
     elevationGain: 600,
     maxElevation: 1500,
     description: "A network of beautiful trails through Berkeley's backyard wilderness. Includes botanical garden, lake for swimming, and a vintage carousel for kids.",
-    transportation: ["driving"],
+    transportation: ["driving", "public-transport"],
     accessibility: ["pet-friendly", "kid-friendly"],
     imageUrl: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb",
+    parking: "ample",
+    trailCondition: "good",
+    status: "open",
+    bestVisitingTime: "Late spring (May) for wildflowers in bloom or early fall (September) for warm, clear days without summer crowds.",
+    publicTransportInfo: "AC Transit Line 67 runs from downtown Berkeley BART to the Regional Parks Botanic Garden in Tilden.",
+    localTips: [
+      "The Little Farm animal sanctuary welcomes visitors with celery or lettuce to feed the animals.",
+      "South Park Drive closes November through March to protect migrating newts.",
+      "The Brazil Room area has free outdoor BBQ pits, but reserve them early in summer months."
+    ]
   },
 ];
+
