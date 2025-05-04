@@ -90,13 +90,15 @@ const TrailCard = ({ trail }: TrailCardProps) => {
           </Badge>
           {getStatusBadge(trail.status)}
           {trail.sunset_spot && (
-            <Badge className="bg-[#ea384c] text-white border-none flex items-center gap-1">
-              <Sunset size={14} /> Amazing Sunset View
+            <Badge className="border-none text-white font-medium text-xs px-2.5 py-1 rounded-full" 
+              style={{ background: 'linear-gradient(90deg, #FFA500 0%, #FF69B4 100%)' }}>
+              <Sunset size={14} className="mr-1" /> Amazing Sunset View
             </Badge>
           )}
           {trail.sunrise_spot && (
-            <Badge className="bg-[#33C3F0] text-white border-none flex items-center gap-1">
-              <Sunrise size={14} /> Top Sunrise Trail
+            <Badge className="border-none text-gray-800 font-medium text-xs px-2.5 py-1 rounded-full" 
+              style={{ background: 'linear-gradient(90deg, #FFDAB9 0%, #FFFACD 100%)' }}>
+              <Sunrise size={14} className="mr-1" /> Top Sunrise Trail
             </Badge>
           )}
         </div>
