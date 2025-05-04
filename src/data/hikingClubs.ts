@@ -19,7 +19,7 @@ export const hikingClubs: HikingClub[] = [
     location: "San Francisco, Penninsula",
     frequency: "Weekly",
     link: "https://www.meetup.com/mid-peninsula-hiking-activities-group",
-    image: "https://source.unsplash.com/featured/?hiking,group"
+    image: "https://unsplash.com/photos/silhouette-photo-of-three-person-near-tall-trees-xOigCUcFdA8"
   },
   {
     id: "sierra-club",
