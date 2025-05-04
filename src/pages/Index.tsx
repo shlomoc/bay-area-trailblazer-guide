@@ -14,6 +14,7 @@ const Index = () => {
     hikeType: 'all',
     difficulty: 'all',
     accessibility: 'all',
+    viewType: 'all',
   });
   const [filteredTrails, setFilteredTrails] = useState(trails);
 
@@ -31,6 +32,15 @@ const Index = () => {
       
       // Accessibility filter
       if (filterOptions.accessibility !== 'all' && !trail.accessibility.includes(filterOptions.accessibility as AccessibilityFeature)) {
+        return false;
+      }
+      
+      // View type filter (sunset/sunrise)
+      if (filterOptions.viewType === 'sunset' && !trail.sunset_spot) {
+        return false;
+      }
+      
+      if (filterOptions.viewType === 'sunrise' && !trail.sunrise_spot) {
         return false;
       }
       

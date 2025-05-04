@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Clock, Map, ArrowUp, Leaf } from 'lucide-react';
+import { Clock, Map, ArrowUp, Sunrise, Sunset } from 'lucide-react';
 import { Trail } from '@/data/trails';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -54,8 +54,6 @@ const TrailCard = ({ trail }: TrailCardProps) => {
     }
   };
 
-  const isEcoFriendly = trail.transportation.includes('public-transport');
-
   const getStatusBadge = (status: Trail['status']) => {
     switch (status) {
       case 'open':
@@ -91,9 +89,14 @@ const TrailCard = ({ trail }: TrailCardProps) => {
             {trail.difficulty.charAt(0).toUpperCase() + trail.difficulty.slice(1)}
           </Badge>
           {getStatusBadge(trail.status)}
-          {isEcoFriendly && (
-            <Badge className="bg-green-600 text-white border-none flex items-center gap-1">
-              <Leaf size={14} /> Eco-Friendly
+          {trail.sunset_spot && (
+            <Badge className="bg-[#ea384c] text-white border-none flex items-center gap-1">
+              <Sunset size={14} /> Amazing Sunset View
+            </Badge>
+          )}
+          {trail.sunrise_spot && (
+            <Badge className="bg-[#33C3F0] text-white border-none flex items-center gap-1">
+              <Sunrise size={14} /> Top Sunrise Trail
             </Badge>
           )}
         </div>

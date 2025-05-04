@@ -36,6 +36,9 @@ export interface Trail {
   bestVisitingTime?: string;
   publicTransportInfo?: string;
   localTips?: string[];
+  // Sunset/Sunrise attributes
+  sunset_spot?: boolean;
+  sunrise_spot?: boolean;
 }
 
 export const trails: Trail[] = [
@@ -69,7 +72,8 @@ export const trails: Trail[] = [
       "The back trails beyond the main boardwalk are less crowded and equally beautiful.",
       "Pack layers, as the temperature under the redwood canopy can be 10-15°F cooler than surrounding areas.",
       "Visit the gift shop for the special Muir Woods cancellation stamp for National Park enthusiasts."
-    ]
+    ],
+    sunrise_spot: true
   },
   {
     id: "half-moon-bay",
@@ -95,7 +99,8 @@ export const trails: Trail[] = [
       "The Ritz Carlton section has free public access to bathrooms and water fountains.",
       "Pillar Point Harbor (north end) has the best tidepools at low tide.",
       "Best whale watching is January-March; bring binoculars!"
-    ]
+    ],
+    sunset_spot: true
   },
   {
     id: "lands-end",
@@ -121,7 +126,8 @@ export const trails: Trail[] = [
       "The hidden Sutro Baths labyrinth is just north of the main parking lot.",
       "Mile Rock Beach has the best secluded views and is often overlooked by tourists.",
       "Go during King Tides in winter to see spectacular wave action along the cliffs."
-    ]
+    ],
+    sunset_spot: true
   },
   {
     id: "mission-peak",
@@ -147,7 +153,9 @@ export const trails: Trail[] = [
       "The Hidden Valley Trail from Ohlone College is longer but far less crowded than the Stanford Avenue route.",
       "Bring trekking poles for the steep descent which can be hard on knees.",
       "Start no later than 3 hours before sunset to avoid hiking down in the dark."
-    ]
+    ],
+    sunset_spot: true,
+    sunrise_spot: true
   },
   {
     id: "golden-gate-park",
@@ -199,7 +207,8 @@ export const trails: Trail[] = [
       "Rent bikes at the island dock to cover more ground (call ahead for reservations).",
       "The Sunset Trail has better views but more climbing than the Perimeter Trail.",
       "Pack a picnic to enjoy at East Garrison, where tables have the best views."
-    ]
+    ],
+    sunset_spot: true
   },
   {
     id: "mt-tamalpais",
@@ -225,7 +234,9 @@ export const trails: Trail[] = [
       "The fire lookout tower at the summit is staffed by volunteers who offer fascinating information about the mountain's history.",
       "West Point Inn (accessible only by foot) offers pancake breakfasts one Sunday per month.",
       "Fog often covers the mountain in summer; check webcams before going."
-    ]
+    ],
+    sunrise_spot: true,
+    sunset_spot: true
   },
   {
     id: "sutro-baths",
@@ -251,7 +262,8 @@ export const trails: Trail[] = [
       "Look for the hidden tunnel on the south end of the ruins that leads to a secret beach.",
       "The nearby Cliff House restaurant has been replaced with a lookout area offering excellent views.",
       "At low tide, you can see remnants of ships that wrecked along this stretch of coast."
-    ]
+    ],
+    sunset_spot: true
   },
   {
     id: "tilden-park",
@@ -277,7 +289,7 @@ export const trails: Trail[] = [
       "The Little Farm animal sanctuary welcomes visitors with celery or lettuce to feed the animals.",
       "South Park Drive closes November through March to protect migrating newts.",
       "The Brazil Room area has free outdoor BBQ pits, but reserve them early in summer months."
-    ]
+    ],
+    sunrise_spot: true
   },
 ];
-

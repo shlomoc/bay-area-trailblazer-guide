@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Difficulty, AccessibilityFeature } from '@/data/trails';
+import { Sunrise, Sunset } from 'lucide-react';
 
 type FiltersModalProps = {
   open: boolean;
@@ -23,6 +24,7 @@ export type FilterOptions = {
   hikeType: 'all' | 'day' | 'multi-day';
   difficulty: 'all' | Difficulty;
   accessibility: 'all' | AccessibilityFeature;
+  viewType: 'all' | 'sunset' | 'sunrise';
 };
 
 const FiltersModal = ({ open, onOpenChange, onApplyFilters, currentFilters }: FiltersModalProps) => {
@@ -92,6 +94,34 @@ const FiltersModal = ({ open, onOpenChange, onApplyFilters, currentFilters }: Fi
                 <Label htmlFor="diff-hard" className="flex items-center">
                   Hard
                   <span className="ml-2 px-2 py-0.5 bg-baytrail-warning text-white text-xs rounded-full">Hard</span>
+                </Label>
+              </div>
+            </RadioGroup>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="font-medium text-sm">Filter by Views</h3>
+            <RadioGroup
+              value={filters.viewType}
+              onValueChange={(value) => setFilters({ ...filters, viewType: value as any })}
+              className="flex flex-col space-y-1"
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="all" id="view-all" />
+                <Label htmlFor="view-all">All</Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="sunset" id="view-sunset" />
+                <Label htmlFor="view-sunset" className="flex items-center">
+                  <Sunset size={16} className="mr-1 text-[#ea384c]" />
+                  Sunset Spots
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="sunrise" id="view-sunrise" />
+                <Label htmlFor="view-sunrise" className="flex items-center">
+                  <Sunrise size={16} className="mr-1 text-[#33C3F0]" />
+                  Sunrise Spots
                 </Label>
               </div>
             </RadioGroup>

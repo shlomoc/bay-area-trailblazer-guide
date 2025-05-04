@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Clock, Map, ArrowUp, ExternalLink, Leaf, Timer } from 'lucide-react';
+import { Clock, Map, ArrowUp, ExternalLink, Timer, Sunrise, Sunset } from 'lucide-react';
 import { Trail } from '@/data/trails';
 
 interface TrailDetailModalProps {
@@ -109,8 +109,6 @@ const TrailDetailModal = ({ trail, open, onOpenChange }: TrailDetailModalProps) 
     }
   };
 
-  const isEcoFriendly = trail.transportation.includes('public-transport');
-
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -122,9 +120,14 @@ const TrailDetailModal = ({ trail, open, onOpenChange }: TrailDetailModalProps) 
               <Badge className={`${getDifficultyColor(trail.difficulty)}`}>
                 {trail.difficulty.charAt(0).toUpperCase() + trail.difficulty.slice(1)}
               </Badge>
-              {isEcoFriendly && (
-                <Badge className="bg-green-600 text-white border-none flex items-center gap-1">
-                  <Leaf size={14} /> Eco-Friendly
+              {trail.sunset_spot && (
+                <Badge className="bg-[#ea384c] text-white border-none flex items-center gap-1">
+                  <Sunset size={14} /> Sunset View
+                </Badge>
+              )}
+              {trail.sunrise_spot && (
+                <Badge className="bg-[#33C3F0] text-white border-none flex items-center gap-1">
+                  <Sunrise size={14} /> Sunrise Trail
                 </Badge>
               )}
             </div>
@@ -199,10 +202,9 @@ const TrailDetailModal = ({ trail, open, onOpenChange }: TrailDetailModalProps) 
                 ))}
               </div>
               
-              {isEcoFriendly && trail.publicTransportInfo && (
-                <div className="mb-4 p-3 bg-green-50 rounded-md border border-green-200">
-                  <div className="flex items-center gap-2 font-semibold text-green-700 mb-1">
-                    <Leaf size={16} />
+              {trail.publicTransportInfo && (
+                <div className="mb-4 p-3 bg-gray-50 rounded-md border border-gray-200">
+                  <div className="flex items-center gap-2 font-semibold text-gray-700 mb-1">
                     <span>Public Transportation</span>
                   </div>
                   <p className="text-sm text-gray-700">{trail.publicTransportInfo}</p>
