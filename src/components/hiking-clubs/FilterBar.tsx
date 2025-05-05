@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Input } from "@/components/ui/input";
 import { 
   Select,
@@ -21,6 +21,14 @@ interface FilterBarProps {
 const FilterBar = ({ searchTerm, setSearchTerm, clubType, setClubType }: FilterBarProps) => {
   const clubTypes = ['All Types', 'Casual', 'Challenging', 'Family-Friendly', 'Women-Only', 'Eco-Conservation'];
 
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleTypeChange = (value: string) => {
+    setClubType(value);
+  };
+
   return (
     <div className="mb-12">
       <div className="flex flex-col md:flex-row gap-4">
@@ -30,12 +38,12 @@ const FilterBar = ({ searchTerm, setSearchTerm, clubType, setClubType }: FilterB
             type="text"
             placeholder="Search by Club Name or City..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={handleSearchChange}
             className="pl-10 h-12 border-baytrail-border rounded-lg"
           />
         </div>
         <div className="w-full md:w-[30%]">
-          <Select value={clubType} onValueChange={setClubType}>
+          <Select value={clubType} onValueChange={handleTypeChange}>
             <SelectTrigger className="h-12 border-baytrail-border rounded-lg">
               <SelectValue placeholder="All Types" />
             </SelectTrigger>
