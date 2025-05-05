@@ -1,5 +1,7 @@
 
 import React from 'react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import HeroSection from '@/components/hiking-clubs/HeroSection';
 import FilterBar from '@/components/hiking-clubs/FilterBar';
 import ClubGrid from '@/components/hiking-clubs/ClubGrid';
@@ -28,18 +30,22 @@ const HikingClubs = () => {
   }, [searchTerm, clubType]);
 
   return (
-    <div className="bg-baytrail-background min-h-screen">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 pb-16">
-        <HeroSection />
-        <FilterBar 
-          searchTerm={searchTerm} 
-          setSearchTerm={setSearchTerm} 
-          clubType={clubType} 
-          setClubType={setClubType} 
-        />
-        <ClubGrid clubs={filteredClubs} />
-        <CTASection />
+    <div className="flex flex-col min-h-screen bg-baytrail-background">
+      <Header />
+      <div className="flex-grow">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 pb-16">
+          <HeroSection />
+          <FilterBar 
+            searchTerm={searchTerm} 
+            setSearchTerm={setSearchTerm} 
+            clubType={clubType} 
+            setClubType={setClubType} 
+          />
+          <ClubGrid clubs={filteredClubs} />
+          <CTASection />
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };

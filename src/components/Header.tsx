@@ -3,7 +3,7 @@ import React from 'react';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
 import { Map, ExternalLink } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   NavigationMenu,
   NavigationMenuContent,
@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const Header = () => {
+  const location = useLocation();
+  
   return (
     <header className="bg-white py-4 px-6 sticky top-0 z-50 shadow-sm">
       <div className="container max-w-7xl mx-auto flex justify-between items-center">
@@ -24,14 +26,14 @@ const Header = () => {
           <NavigationMenuList>
             <NavigationMenuItem>
               <Link to="/">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${location.pathname === '/' ? 'bg-accent/50' : ''}`}>
                   Trails
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <Link to="/hiking-clubs">
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink className={`${navigationMenuTriggerStyle()} ${location.pathname === '/hiking-clubs' ? 'bg-accent/50' : ''}`}>
                   Hiking Clubs
                 </NavigationMenuLink>
               </Link>
