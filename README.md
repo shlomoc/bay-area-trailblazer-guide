@@ -1,4 +1,8 @@
-# Welcome to your Lovable project
+# Bay Area Trailblazer Guide
+
+## Project Overview
+
+Bay Area Trailblazer Guide is a web application designed to help outdoor enthusiasts discover hiking trails and hiking clubs throughout the Bay Area. The platform features curated trail information, club listings, and resources to connect with the local hiking community.
 
 ## Project info
 
