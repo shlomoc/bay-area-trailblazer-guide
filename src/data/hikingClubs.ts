@@ -13,13 +13,13 @@ export interface HikingClub {
 export const hikingClubs: HikingClub[] = [
   {
     id: "bay-area-hikers",
-    name: "Bay Area Hikers Meetup",
+    name: "Hiking & Activities Club (Bay Area)",
     description: "A welcoming group offering weekly hikes across the Bay Area, from casual walks to challenging climbs.",
     type: "Casual",
-    location: "San Francisco, Penninsula",
-    frequency: "Weekly",
+    location: "Penninsula",
+    frequency: "Bi-weekly",
     link: "https://www.meetup.com/mid-peninsula-hiking-activities-group",
-    image: "https://images.unsplash.com/photo-1476611338391-6f395a0ebc7b?q=80&w=400&h=300&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "https://secure.meetupstatic.com/photos/event/a/8/e/4/clean_511663236.webp"
   },
   {
     id: "sierra-club",
@@ -29,66 +29,26 @@ export const hikingClubs: HikingClub[] = [
     location: "San Francisco, Marin, East Bay",
     frequency: "Weekly",
     link: "https://www.sierraclub.org/san-francisco-bay",
-    image: "https://source.unsplash.com/featured/?forest,hiking"
+    image: "https://images.unsplash.com/photo-1476611338391-6f395a0ebc7b?q=80&w=400&h=300&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
-    id: "latino-outdoors",
-    name: "Latino Outdoors",
-    description: "Cultural connections and outdoor adventures for Latino communities throughout the Bay Area.",
-    type: "Family-Friendly",
-    location: "Bay Area-wide",
-    frequency: "Monthly",
-    link: "https://latinooutdoors.org/",
-    image: "https://source.unsplash.com/featured/?mountains,hiking"
-  },
-  {
-    id: "trail-sisters",
-    name: "Trail Sisters SF",
-    description: "Women-focused hiking and trail running group with events for all experience levels.",
-    type: "Women-Only",
-    location: "San Francisco",
-    frequency: "Bi-weekly",
-    link: "https://trailsisters.net/",
-    image: "https://source.unsplash.com/featured/?women,hiking"
-  },
-  {
-    id: "east-bay-hikes",
-    name: "East Bay Hike Explorers",
-    description: "Weekend adventures across the hidden trails and nature reserves of the East Bay.",
-    type: "Challenging",
-    location: "Oakland, Berkeley, Richmond",
-    frequency: "Weekly",
-    link: "https://www.meetup.com/bay-area-hiking-club",
-    image: "https://source.unsplash.com/featured/?trail,hiking"
-  },
-  {
-    id: "sunset-hikers",
-    name: "Sunset Hikers",
-    description: "Evening and sunset hikes with breathtaking views across Bay Area peaks and coastal trails.",
+    id: "hiking-wellness",
+    name: "Bay Area Hiking, Walking, Wellness Club",
+    description: "Where Healthy Living Meets Lifelong Friendships and Love!",
     type: "Casual",
-    location: "Marin, San Francisco",
+    location: "Bay Area-wide",
     frequency: "Weekly",
-    link: "https://www.meetup.com/sunset-hikers",
-    image: "https://source.unsplash.com/featured/?sunset,hiking"
+    link: "https://www.meetup.com/bay-area-hiking-walking-wellness-club",
+    image: "https://secure.meetupstatic.com/photos/event/4/a/d/6/clean_526699158.webp"
   },
   {
-    id: "peninsula-trekkers",
-    name: "Peninsula Trail Trekkers",
-    description: "Family-friendly hikes exploring the diverse natural beauty of the Peninsula.",
-    type: "Family-Friendly",
-    location: "Redwood City, Palo Alto, Mountain View",
+    id: "teds-hikes",
+    name: "Teds Hikes SF/Marin",
+    description: "Environmental Friendly hiking group, using public transportation and carpooling to hiking trails throughout Marin and San Francisco counties.",
+    type: "Casual",
+    location: "San Francisco, Marin",
     frequency: "Bi-weekly",
-    link: "https://www.meetup.com/peninsula-hiking",
-    image: "https://source.unsplash.com/featured/?family,hiking"
-  },
-  {
-    id: "morning-trails",
-    name: "Morning Trail Runners",
-    description: "Early morning trail running and hiking for fitness enthusiasts and nature lovers.",
-    type: "Challenging",
-    location: "Berkeley, Oakland",
-    frequency: "Weekly",
-    link: "https://www.strava.com/clubs/morning-trails",
-    image: "https://source.unsplash.com/featured/?running,trail"
+    link: "https://www.meetup.com/san-francisco-hiking-meetup-7-12-miles-slow-paced",
+    image: "https://secure.meetupstatic.com/photos/event/e/3/f/8/clean_527338360.webp"
   }
 ];
