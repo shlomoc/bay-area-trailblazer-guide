@@ -44,8 +44,10 @@ const Index = () => {
         return false;
       }
       
-      // For hikeType, we don't have this info in our data model, so we'll just keep it as is
-      // In a real app you would filter based on the hike type data
+      // Hike type filter
+      if (filterOptions.hikeType !== 'all' && trail.hikeType !== filterOptions.hikeType) {
+        return false;
+      }
       
       return true;
     });

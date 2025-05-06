@@ -1,4 +1,3 @@
-
 export type TrailType = 'mountain' | 'coast' | 'urban' | 'park';
 export type Difficulty = 'easy' | 'moderate' | 'hard';
 export type AccessibilityFeature = 'pet-friendly' | 'kid-friendly' | 'wheelchair-accessible';
@@ -12,6 +11,7 @@ export interface Trail {
   name: string;
   subtitle: string;
   type: TrailType;
+  hikeType: 'day';
   difficulty: Difficulty;
   reservationRequired: boolean;
   distance: number; // in miles
@@ -46,7 +46,8 @@ export const trails: Trail[] = [
     id: "muir-woods",
     name: "Muir Woods Loop",
     subtitle: "Direct Access from Parking Lot",
-    type: "mountain",
+    type: "park",
+    hikeType: "day",
     difficulty: "easy",
     reservationRequired: true,
     distance: 3.5,
@@ -56,7 +57,7 @@ export const trails: Trail[] = [
     description: "An easy scenic walk through the giant redwoods of Muir Woods. Perfect for families and first-time visitors. The main trail is paved and wheelchair accessible.",
     transportation: ["driving", "shuttle", "public-transport"],
     accessibility: ["kid-friendly"],
-    imageUrl: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843",
+    imageUrl: "images/caleb-jones-J3JMyXWQHXU-unsplash.jpg",
     reservationUrl: "https://gomuirwoods.com/",
     fullDescription: "Muir Woods National Monument is home to a pristine forest of old-growth coast redwoods, some of the tallest trees on Earth. The Muir Woods Loop takes you through the heart of this majestic forest, alongside a gentle creek, and offers multiple bridge crossings to create shorter or longer loops. This trail has a boardwalk and paved sections making parts of it accessible to wheelchairs and strollers.",
     parking: "reservation-required",
@@ -72,14 +73,14 @@ export const trails: Trail[] = [
       "The back trails beyond the main boardwalk are less crowded and equally beautiful.",
       "Pack layers, as the temperature under the redwood canopy can be 10-15°F cooler than surrounding areas.",
       "Visit the gift shop for the special Muir Woods cancellation stamp for National Park enthusiasts."
-    ],
-    sunrise_spot: true
+    ]
   },
   {
     id: "half-moon-bay",
     name: "Half Moon Bay Coastal Trail",
     subtitle: "Ocean Views and Beach Access",
     type: "coast",
+    hikeType: "day",
     difficulty: "easy",
     reservationRequired: false,
     distance: 4.0,
@@ -89,7 +90,7 @@ export const trails: Trail[] = [
     description: "A flat, easy coastal walk with stunning Pacific Ocean views. Great for spotting marine wildlife and catching the sunset.",
     transportation: ["driving", "public-transport"],
     accessibility: ["pet-friendly", "kid-friendly", "wheelchair-accessible"],
-    imageUrl: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
+    imageUrl: "https://images.unsplash.com/photo-1620839954165-1713d1c7cdfc?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     parking: "ample",
     trailCondition: "good",
     status: "open",
@@ -107,6 +108,7 @@ export const trails: Trail[] = [
     name: "Lands End Trail",
     subtitle: "Golden Gate Bridge Views",
     type: "urban",
+    hikeType: "day",
     difficulty: "moderate",
     reservationRequired: false,
     distance: 3.0,
@@ -116,7 +118,7 @@ export const trails: Trail[] = [
     description: "Historic ruins, wildflower-covered hills, and stunning views of the Golden Gate Bridge. One of San Francisco's most scenic urban hikes.",
     transportation: ["driving", "walking", "public-transport"],
     accessibility: ["pet-friendly"],
-    imageUrl: "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/8/88/Coastal_Trail_and_Golden_Gate_Bridge%2C_April_2019.JPG",
     parking: "limited",
     trailCondition: "good",
     status: "open",
@@ -134,6 +136,7 @@ export const trails: Trail[] = [
     name: "Mission Peak Summit",
     subtitle: "Challenging Climb with Panoramic Views",
     type: "mountain",
+    hikeType: "day",
     difficulty: "hard",
     reservationRequired: false,
     distance: 6.2,
@@ -143,7 +146,7 @@ export const trails: Trail[] = [
     description: "A challenging hike to the iconic peak with panoramic views of the entire Bay Area. Popular for sunrise and sunset hikes.",
     transportation: ["driving", "public-transport"],
     accessibility: [],
-    imageUrl: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3",
+    imageUrl: "images/mission-peak.jpg",
     parking: "difficult",
     trailCondition: "good",
     status: "open",
@@ -162,6 +165,7 @@ export const trails: Trail[] = [
     name: "Golden Gate Park Gardens",
     subtitle: "Botanical Garden and Japanese Tea Garden",
     type: "park",
+    hikeType: "day",
     difficulty: "easy",
     reservationRequired: false,
     distance: 2.5,
@@ -171,7 +175,7 @@ export const trails: Trail[] = [
     description: "A peaceful stroll through San Francisco's beautiful botanical gardens, including the historic Japanese Tea Garden and Conservatory of Flowers.",
     transportation: ["driving", "walking", "public-transport"],
     accessibility: ["kid-friendly", "wheelchair-accessible"],
-    imageUrl: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9",
+    imageUrl: "images/mason-c-36k-_65ZCU8-unsplash.jpg",
     parking: "limited",
     trailCondition: "excellent",
     status: "open",
@@ -188,6 +192,7 @@ export const trails: Trail[] = [
     name: "Angel Island Perimeter Trail",
     subtitle: "360° Bay Views from Ferry-Access Island",
     type: "coast",
+    hikeType: "day",
     difficulty: "moderate",
     reservationRequired: false,
     distance: 5.5,
@@ -197,7 +202,7 @@ export const trails: Trail[] = [
     description: "A scenic loop around Angel Island with incredible 360-degree views of San Francisco, Marin County, Oakland, and beyond. Accessible only by ferry.",
     transportation: ["shuttle", "public-transport"],
     accessibility: ["pet-friendly"],
-    imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+    imageUrl: "images/nathan-barteau--Lzspf-YnKE-unsplash.jpg",
     parking: "limited",
     trailCondition: "good",
     status: "open",
@@ -215,6 +220,7 @@ export const trails: Trail[] = [
     name: "Mt. Tamalpais East Peak",
     subtitle: "Marin County's Highest Peak",
     type: "mountain",
+    hikeType: "day",
     difficulty: "hard",
     reservationRequired: false,
     distance: 4.5,
@@ -224,7 +230,7 @@ export const trails: Trail[] = [
     description: "Climb to the highest peak in Marin County for breathtaking views of the Bay Area, Pacific Ocean, and even the Sierra Nevada on clear days.",
     transportation: ["driving"],
     accessibility: [],
-    imageUrl: "https://images.unsplash.com/photo-1472396961693-142e6e269027",
+    imageUrl: "https://thebubblybay.com/wp-content/uploads/2013/04/mt_tamalpais.jpg",
     parking: "limited",
     trailCondition: "good",
     status: "partially-closed",
@@ -243,6 +249,7 @@ export const trails: Trail[] = [
     name: "Sutro Baths Ruins",
     subtitle: "Historic Bath House Ruins by the Sea",
     type: "urban",
+    hikeType: "day",
     difficulty: "easy",
     reservationRequired: false,
     distance: 1.0,
@@ -252,7 +259,7 @@ export const trails: Trail[] = [
     description: "Explore the ruins of the historic Sutro Baths, once the world's largest indoor swimming pool complex. Now a fascinating seaside archaeological site.",
     transportation: ["driving", "walking", "public-transport"],
     accessibility: ["kid-friendly"],
-    imageUrl: "https://images.unsplash.com/photo-1433086966358-54859d0ed716",
+    imageUrl: "https://www.nps.gov/common/uploads/cropped_image/primary/FD5D4F5E-032F-59D2-5AC828EDAD88DF53.jpg?width=1600&quality=90&mode=crop",
     parking: "limited",
     trailCondition: "good",
     status: "open",
@@ -270,6 +277,7 @@ export const trails: Trail[] = [
     name: "Tilden Regional Park Trails",
     subtitle: "Berkeley's Wilderness Retreat",
     type: "park",
+    hikeType: "day",
     difficulty: "moderate",
     reservationRequired: false,
     distance: 4.0,
@@ -279,7 +287,7 @@ export const trails: Trail[] = [
     description: "A network of beautiful trails through Berkeley's backyard wilderness. Includes botanical garden, lake for swimming, and a vintage carousel for kids.",
     transportation: ["driving", "public-transport"],
     accessibility: ["pet-friendly", "kid-friendly"],
-    imageUrl: "https://images.unsplash.com/photo-1482938289607-e9573fc25ebb",
+    imageUrl: "https://www.marinmommies.com/sites/default/files/styles/full-width_column_827/public/stories/tilden-trains.jpg",
     parking: "ample",
     trailCondition: "good",
     status: "open",
@@ -289,7 +297,6 @@ export const trails: Trail[] = [
       "The Little Farm animal sanctuary welcomes visitors with celery or lettuce to feed the animals.",
       "South Park Drive closes November through March to protect migrating newts.",
       "The Brazil Room area has free outdoor BBQ pits, but reserve them early in summer months."
-    ],
-    sunrise_spot: true
+    ]
   },
-];
+]; 
